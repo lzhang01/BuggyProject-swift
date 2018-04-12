@@ -25,15 +25,15 @@ class ViewController: UIViewController {
 
     // MARK: Actions
     @IBAction func bTap() {
-        if let id = textField?.text {
-            searches.append(id)
-        }
         guard let request = imgurURLRequest() else { return }
-        imageView?.setImageWith(request, placeholderImage: nil, success: {
-            [weak self] (request, response, image) in self?.imageView?.image = image
+        searches.append((textField?.text)!)
+        imageView?.setImageWith(request, placeholderImage: nil,
+            success: { [weak self] (request, response, image) in
+                print("success")
+                self?.imageView?.image = image
             },
             failure: { (request, response, error) in
-            //handle here
+                print("failure")
         })
     }
 

@@ -8,17 +8,18 @@
 
 import UIKit
 
-class SearchesViewController: UIViewController, UITableViewDataSource {
+class SearchesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     static let cellIdentifier = "cellIdentifier"
-    var searches : [String] = []
+    var searches : [String] = [] 
     @IBOutlet var tableView : UITableView!
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: SearchesViewController.cellIdentifier)
+        tableView.delegate = self
         tableView.dataSource = self
-        tableView.reloadData()
     }
 
     // MARK: UITableViewDataSource
